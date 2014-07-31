@@ -13,6 +13,8 @@ env:
   - HASKELL_PLATFORM=2013.2.0.0 CABAL_VERSION=1.18
   - GHC_VERSION=7.8.1 CABAL_VERSION=1.18
 before_install:
+  - "ghc --version"
+  - "cabal --version"
 install: true
 script: "echo tests already run."
 branches:
