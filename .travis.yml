@@ -21,6 +21,7 @@ before_install:
     else
       travis_retry sudo apt-get install cabal-install-$CABAL_VERSION ghc-$GHC_VERSION happy
       export PATH=/opt/ghc/$GHC_VERSION/bin:/opt/cabal/$CABAL_VERSION/bin:$PATH
+    fi
   - ghc --version
   - cabal --version
 install: true
