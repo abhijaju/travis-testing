@@ -4,21 +4,23 @@ env:
   # problems sometimes and connection fails. We would want at-least
   # this build to go throught.
   #
-  - GHC_VERSION= CABAL_VERSION=
+  - HASKELL_PLATFORM= GHC_VERSION= CABAL_VERSION=
   #
   # - GHC_VERSION=7.4.2 CABAL_VERSION=1.18
   # - GHC_VERSION=7.6.3 CABAL_VERSION=1.18
   # Add specific platforms. Make sure to add the corresponding cabal
   # config files in the platform subdirectory.
   # - HASKELL_PLATFORM=2012.2.0.0 CABAL_VERSION=1.18
-  - HASKELL_PLATFORM=2013.2.0.0 CABAL_VERSION=1.18
+  - HASKELL_PLATFORM=2013.2.0.0 GHC_VERSION=7.6.3 CABAL_VERSION=1.18
   - GHC_VERSION=7.8.1 CABAL_VERSION=1.18
 before_install:
-  - "printenv"
-  - "ghc --version"
-  - "cabal --version"
+  - sudo add-apt-repository -y ppa:hvr/ghc
+  - sudo apt-get update
+  - sudo apt-get install cabal-install-$CABAL_VERSION ghc-$GHC_VERSION happy
+  - ghc --version
+  - cabal --version
 install: true
-script: "echo tests already run."
+script: echo tests already run
 branches:
   only:
     - master
