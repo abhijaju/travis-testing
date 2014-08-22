@@ -13,7 +13,7 @@ GUEST_DEPENDENCIES="build-essential git m4 sudo python"
 
 function setup_arm_chroot {
     # Host dependencies
-    sudo apt-get install -qq -y ${HOST_DEPENDENCIES}
+    travis_retry sudo apt-get install -qq -y ${HOST_DEPENDENCIES}
 
     # Create chrooted environment
     sudo mkdir ${CHROOT_DIR}
