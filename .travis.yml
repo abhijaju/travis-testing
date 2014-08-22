@@ -14,6 +14,7 @@ env:
 matrix:
   fast_finish: true
 before_install:
+  - travis_retry sudo apt-get update
   - if [ "$ARCH" == "arm" ]; then
       bash -ex .travis-arch.sh;
     fi
